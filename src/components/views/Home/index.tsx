@@ -1,5 +1,10 @@
 import { Layout } from "@/components/Layout";
+import HeroComponent from "./Fragments/Hero";
 
 export const HomeView = () => {
-  return <Layout>Welcome to Curah Dringu</Layout>;
+  return (
+    <Layout>
+      <HeroComponent />
+    </Layout>
+  );
 };
