@@ -6,6 +6,13 @@ Hi, welcome to this repository. If you want to discuss further with the owner of
 
 ## Learn More
 
+Technologies:
+
+- Next.js
+- Chakra UI
+- React Icons
+- TypeScript
+
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
