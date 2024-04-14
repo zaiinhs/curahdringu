@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Container,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -28,81 +29,85 @@ export const NavbarComponent = () => {
   return (
     <>
       <HeadComponent />
-      <Box>
-        <Flex
-          bg={useColorModeValue("white", "gray.800")}
-          color={useColorModeValue("gray.600", "white")}
-          minH={"60px"}
-          py={{ base: 2 }}
-          px={{ base: 4 }}
-          borderBottom={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.900")}
-          align={"center"}
-        >
+      <Box position={"fixed"} top={"0"} w={"100%"}>
+        <Container as={Stack} maxW={"6xl"} py={4}>
           <Flex
-            flex={{ base: 1, md: "auto" }}
-            ml={{ base: -2 }}
-            display={{ base: "flex", md: "none" }}
+            opacity={"60%"}
+            borderRadius={"full"}
+            bg={useColorModeValue("white", "gray.800")}
+            color={useColorModeValue("gray.600", "white")}
+            minH={"60px"}
+            py={{ base: 2 }}
+            px={{ base: 4 }}
+            border={1.5}
+            borderStyle={"solid"}
+            borderColor={useColorModeValue("gray.400", "gray.900")}
+            align={"center"}
           >
-            <IconButton
-              onClick={onToggle}
-              icon={
-                isOpen ? (
-                  <CloseIcon w={3} h={3} />
-                ) : (
-                  <HamburgerIcon w={5} h={5} />
-                )
-              }
-              variant={"ghost"}
-              aria-label={"Toggle Navigation"}
-            />
-          </Flex>
-          <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-            <Text
-              textAlign={useBreakpointValue({ base: "center", md: "left" })}
-              fontFamily={"heading"}
-              color={useColorModeValue("gray.800", "white")}
+            <Flex
+              flex={{ base: 1, md: "auto" }}
+              ml={{ base: -2 }}
+              display={{ base: "flex", md: "none" }}
             >
-              Logo
-            </Text>
-
-            <Flex display={{ base: "none", md: "flex" }} ml={10}>
-              <DesktopNav />
+              <IconButton
+                onClick={onToggle}
+                icon={
+                  isOpen ? (
+                    <CloseIcon w={3} h={3} />
+                  ) : (
+                    <HamburgerIcon w={5} h={5} />
+                  )
+                }
+                variant={"ghost"}
+                aria-label={"Toggle Navigation"}
+              />
             </Flex>
-          </Flex>
+            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+              <Text
+                textAlign={useBreakpointValue({ base: "center", md: "left" })}
+                fontFamily={"heading"}
+                color={useColorModeValue("gray.800", "white")}
+              >
+                Logo
+              </Text>
 
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={"flex-end"}
-            direction={"row"}
-            spacing={6}
-          >
-            <Button
-              as={"a"}
-              fontSize={"sm"}
-              fontWeight={400}
-              variant={"link"}
-              href={"#"}
+              <Flex display={{ base: "none", md: "flex" }} ml={10}>
+                <DesktopNav />
+              </Flex>
+            </Flex>
+
+            <Stack
+              flex={{ base: 1, md: 0 }}
+              justify={"flex-end"}
+              direction={"row"}
+              spacing={6}
             >
-              Sign In
-            </Button>
-            <Button
-              as={"a"}
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={"sm"}
-              fontWeight={600}
-              color={"white"}
-              bg={"#4299e1"}
-              href={"#"}
-              _hover={{
-                bg: "pink.300",
-              }}
-            >
-              Sign Up
-            </Button>
-          </Stack>
-        </Flex>
+              <Button
+                as={"a"}
+                fontSize={"sm"}
+                fontWeight={400}
+                variant={"link"}
+                href={"#"}
+              >
+                Sign In
+              </Button>
+              <Button
+                as={"a"}
+                display={{ base: "none", md: "inline-flex" }}
+                fontSize={"sm"}
+                fontWeight={600}
+                color={"white"}
+                bg={"gray"}
+                href={"#"}
+                _hover={{
+                  bg: "#4299e1",
+                }}
+              >
+                Sign Up
+              </Button>
+            </Stack>
+          </Flex>
+        </Container>
 
         <Collapse in={isOpen} animateOpacity>
           <MobileNav />
