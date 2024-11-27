@@ -1,3 +1,4 @@
+"use client";
 import {
   Stack,
   Flex,
@@ -6,8 +7,11 @@ import {
   VStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function HeroComponent() {
+  const router = useRouter();
+
   return (
     <Flex
       w={"full"}
@@ -24,32 +28,39 @@ export default function HeroComponent() {
         px={useBreakpointValue({ base: 4, md: 8 })}
         bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
-        <Stack maxW={"2xl"} align={"flex-start"} spacing={6}>
+        <Stack
+          maxW={"2xl"}
+          align={{ base: "flex-start", md: "center" }}
+          spacing={6}
+        >
           <Text
             color={"white"}
             fontWeight={700}
             lineHeight={1.2}
-            fontSize={useBreakpointValue({ base: "3xl", md: "4xl" })}
+            fontSize={useBreakpointValue({ base: "4xl", md: "7xl" })}
+            textAlign={"center"}
+            textShadow={"2px 2px 4px rgba(0, 0, 0, 0.5)"}
+            letterSpacing={"wide"}
+            // textTransform={"uppercase"}
           >
-            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-            eiusmod tempor
+            Selamat Datang di Website Resmi Desa Curah Dringu
           </Text>
-          <Stack direction={"row"}>
+          <Text
+            color={"white"}
+            fontSize={useBreakpointValue({ base: "md", md: "xl" })}
+          >
+            Kecamatan Tongas, Kabupaten Probolinggo.
+          </Text>
+
+          <Stack direction={"row"} w="100%" justifyContent={"center"}>
             <Button
               bg={"blue.400"}
               rounded={"full"}
               color={"white"}
               _hover={{ bg: "blue.500" }}
+              onClick={() => router.push("/about")}
             >
-              Show me more
-            </Button>
-            <Button
-              bg={"whiteAlpha.300"}
-              rounded={"full"}
-              color={"white"}
-              _hover={{ bg: "whiteAlpha.500" }}
-            >
-              Show me more
+              Selengkapnya
             </Button>
           </Stack>
         </Stack>

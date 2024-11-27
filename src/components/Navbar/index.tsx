@@ -29,7 +29,7 @@ export const NavbarComponent = () => {
   return (
     <>
       <HeadComponent />
-      <Box position={"fixed"} top={"0"} w={"100%"}>
+      <Box zIndex={999} position={"fixed"} top={"0"} w={"100%"}>
         <Container as={Stack} maxW={"6xl"} py={4}>
           <Flex
             opacity={"60%"}
@@ -63,16 +63,24 @@ export const NavbarComponent = () => {
               />
             </Flex>
             <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-              <Text
-                textAlign={useBreakpointValue({ base: "center", md: "left" })}
-                fontFamily={"heading"}
-                color={useColorModeValue("gray.800", "white")}
-              >
-                Logo
-              </Text>
-
-              <Flex display={{ base: "none", md: "flex" }} ml={10}>
-                <DesktopNav />
+              <Flex align="center" width={"max-content"}>
+                <Box
+                  as="img"
+                  src="/logo.png"
+                  alt="Logo"
+                  h={{ base: "30px", md: "40px" }}
+                  w="auto"
+                  objectFit="contain"
+                />
+                <Text
+                  // display={{ base: "none", md: "block" }}
+                  ml={3}
+                  fontSize="xl"
+                  fontWeight="bold"
+                  color={useColorModeValue("gray.700", "white")}
+                >
+                  Desa Curah Dringu
+                </Text>
               </Flex>
             </Flex>
 
@@ -82,7 +90,10 @@ export const NavbarComponent = () => {
               direction={"row"}
               spacing={6}
             >
-              <Button
+              <Flex display={{ base: "none", md: "flex" }} ml={10}>
+                <DesktopNav />
+              </Flex>
+              {/* <Button
                 as={"a"}
                 fontSize={"sm"}
                 fontWeight={400}
@@ -104,7 +115,7 @@ export const NavbarComponent = () => {
                 }}
               >
                 Sign Up
-              </Button>
+              </Button> */}
             </Stack>
           </Flex>
         </Container>
@@ -315,6 +326,15 @@ const NAV_ITEMS: Array<NavItem> = [
     label: "About",
     href: "/about",
   },
+  {
+    label: "Blog",
+    href: "/blog",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+
   // {
   //   label: "Contact",
   //   href: "#",
