@@ -258,6 +258,15 @@ untuk opsi lain (Netlify, server sendiri, dll).
 
 ---
 
+## 🤝 Berkontribusi
+
+Ingin ikut memperbarui konten atau mengembangkan website? Baca
+[**CONTRIBUTING.md**](CONTRIBUTING.md) — tersedia panduan untuk pengelola desa
+(update konten tanpa coding) maupun pengembang (alur cabang, konvensi commit,
+gaya kode, menambah halaman).
+
+---
+
 ## 📞 Kontak
 
 Untuk diskusi lebih lanjut dengan pemilik repository ini, hubungi via
