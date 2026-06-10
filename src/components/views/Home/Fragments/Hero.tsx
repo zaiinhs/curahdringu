@@ -57,7 +57,10 @@ export default function HeroComponent() {
               bg={"blue.400"}
               rounded={"full"}
               color={"white"}
-              _hover={{ bg: "blue.500" }}
+              px={8}
+              boxShadow={"md"}
+              transition={"all 0.2s ease"}
+              _hover={{ bg: "blue.500", transform: "translateY(-2px)", boxShadow: "lg" }}
               onClick={() => router.push("/about")}
             >
               Selengkapnya

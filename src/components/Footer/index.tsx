@@ -56,7 +56,9 @@ export const FooterComponent = () => {
           justify={{ base: "center", md: "space-between" }}
           align={{ base: "center", md: "center" }}
         >
-          <Text>© 2024 Desa Curah Dringu. All rights reserved</Text>
+          <Text>
+            © {new Date().getFullYear()} Desa Curah Dringu. All rights reserved
+          </Text>
           <Stack direction={"row"} spacing={6}>
             <SocialButton label={"Twitter"} href={"#"}>
               <FaTwitter />
