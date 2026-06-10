@@ -211,7 +211,7 @@ export interface Officer {
 }
 
 export const OFFICERS: Officer[] = [
-  { name: "H. Ahmad Saifullah", role: "Kepala Desa" },
+  { name: "Tiyayah", role: "Kepala Desa" },
   { name: "Siti Maesaroh", role: "Sekretaris Desa" },
   { name: "Budi Hartono", role: "Kaur Keuangan" },
   { name: "Dewi Lestari", role: "Kaur Pemerintahan" },
