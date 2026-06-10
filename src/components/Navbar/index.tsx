@@ -32,7 +32,7 @@ export const NavbarComponent = () => {
       <Box zIndex={999} position={"fixed"} top={"0"} w={"100%"}>
         <Container as={Stack} maxW={"6xl"} py={4}>
           <Flex
-            opacity={"60%"}
+            opacity={"85%"}
             borderRadius={"full"}
             bg={useColorModeValue("white", "gray.800")}
             color={useColorModeValue("gray.600", "white")}
@@ -43,6 +43,9 @@ export const NavbarComponent = () => {
             borderStyle={"solid"}
             borderColor={useColorModeValue("gray.400", "gray.900")}
             align={"center"}
+            boxShadow={"md"}
+            transition={"all 0.25s ease"}
+            _hover={{ opacity: "100%", boxShadow: "lg" }}
           >
             <Flex
               flex={{ base: 1, md: "auto" }}
