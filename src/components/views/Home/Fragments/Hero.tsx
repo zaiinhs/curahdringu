@@ -1,73 +1,130 @@
 "use client";
 import {
-  Stack,
-  Flex,
+  Box,
   Button,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  SimpleGrid,
+  Stack,
   Text,
-  VStack,
-  useBreakpointValue,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import NextLink from "next/link";
+import { FiArrowRight } from "react-icons/fi";
+import { QUICK_ACTIONS, VILLAGE } from "@/data/site";
 
 export default function HeroComponent() {
-  const router = useRouter();
-
   return (
-    <Flex
-      w={"full"}
-      h={"100vh"}
-      backgroundImage={
-        "url(https://1.bp.blogspot.com/-fLCRyiKOEow/XloBPPmZzbI/AAAAAAAAR7U/r8gF89GCJPUPjO7TV1euLIm9vUVd_PSlwCLcBGAsYHQ/w1200-h630-p-k-no-nu/WhatsApp%2BImage%2B2020-02-29%2Bat%2B12.38.24%2BPM%25281%2529.jpeg)"
-      }
-      backgroundSize={"cover"}
-      backgroundPosition={"center center"}
+    <Box
+      position="relative"
+      minH={{ base: "92vh", md: "100vh" }}
+      display="flex"
+      alignItems="center"
+      backgroundImage="linear-gradient(to bottom, rgba(10,68,61,0.55), rgba(10,68,61,0.85)), url('/content.jpeg')"
+      backgroundSize="cover"
+      backgroundPosition="center"
+      backgroundAttachment={{ base: "scroll", md: "fixed" }}
     >
-      <VStack
-        w={"full"}
-        justify={"center"}
-        px={useBreakpointValue({ base: 4, md: 8 })}
-        bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
-      >
-        <Stack
-          maxW={"2xl"}
-          align={{ base: "flex-start", md: "center" }}
-          spacing={6}
-        >
-          <Text
-            color={"white"}
-            fontWeight={700}
-            lineHeight={1.2}
-            fontSize={useBreakpointValue({ base: "4xl", md: "7xl" })}
-            textAlign={"center"}
-            textShadow={"2px 2px 4px rgba(0, 0, 0, 0.5)"}
-            letterSpacing={"wide"}
-            // textTransform={"uppercase"}
+      <Container maxW="7xl" pt={{ base: 28, md: 24 }} pb={{ base: 12, md: 16 }}>
+        <Stack spacing={{ base: 6, md: 8 }} maxW="3xl">
+          <HStack
+            spacing={2}
+            bg="whiteAlpha.200"
+            backdropFilter="blur(8px)"
+            border="1px solid"
+            borderColor="whiteAlpha.300"
+            rounded="full"
+            px={4}
+            py={2}
+            w="fit-content"
           >
-            Selamat Datang di Website Resmi Desa Curah Dringu
-          </Text>
-          <Text
-            color={"white"}
-            fontSize={useBreakpointValue({ base: "md", md: "xl" })}
+            <Box w={2} h={2} rounded="full" bg="sand.400" />
+            <Text color="white" fontSize="sm" fontWeight={600}>
+              Desa Pesisir • {VILLAGE.district}, {VILLAGE.regency}
+            </Text>
+          </HStack>
+
+          <Heading
+            color="white"
+            fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
+            lineHeight={1.1}
+            textShadow="0 2px 24px rgba(0,0,0,0.35)"
           >
-            Kecamatan Tongas, Kabupaten Probolinggo.
+            Selamat Datang di{" "}
+            <Text as="span" color="sand.300">
+              {VILLAGE.name}
+            </Text>
+          </Heading>
+
+          <Text
+            color="whiteAlpha.900"
+            fontSize={{ base: "md", md: "xl" }}
+            maxW="2xl"
+            textShadow="0 1px 12px rgba(0,0,0,0.4)"
+          >
+            {VILLAGE.tagline}. Akses layanan administrasi, informasi terkini, dan
+            potensi desa kami — semua dalam satu genggaman.
           </Text>
 
-          <Stack direction={"row"} w="100%" justifyContent={"center"}>
+          <Stack direction={{ base: "column", sm: "row" }} spacing={4}>
             <Button
-              bg={"blue.400"}
-              rounded={"full"}
-              color={"white"}
-              px={8}
-              boxShadow={"md"}
-              transition={"all 0.2s ease"}
-              _hover={{ bg: "blue.500", transform: "translateY(-2px)", boxShadow: "lg" }}
-              onClick={() => router.push("/about")}
+              as={NextLink}
+              href="/layanan"
+              size="lg"
+              colorScheme="sand"
+              rightIcon={<FiArrowRight />}
+              boxShadow="0 10px 30px rgba(248,128,18,0.4)"
             >
-              Selengkapnya
+              Mulai Layanan
+            </Button>
+            <Button
+              as={NextLink}
+              href="/profil"
+              size="lg"
+              variant="outline"
+              color="white"
+              borderColor="whiteAlpha.700"
+              _hover={{ bg: "whiteAlpha.200" }}
+            >
+              Tentang Desa
             </Button>
           </Stack>
+
+          {/* Quick actions */}
+          <SimpleGrid
+            columns={{ base: 2, md: 4 }}
+            spacing={3}
+            pt={{ base: 4, md: 8 }}
+            maxW="2xl"
+          >
+            {QUICK_ACTIONS.map((qa) => (
+              <Flex
+                key={qa.label}
+                as={NextLink}
+                href={qa.href}
+                direction="column"
+                align="center"
+                gap={2}
+                bg="whiteAlpha.200"
+                backdropFilter="blur(8px)"
+                border="1px solid"
+                borderColor="whiteAlpha.300"
+                rounded="xl"
+                p={4}
+                transition="all 0.2s"
+                _hover={{ bg: "whiteAlpha.400", transform: "translateY(-3px)" }}
+              >
+                <Icon as={qa.icon} boxSize={6} color="sand.300" />
+                <Text color="white" fontSize="sm" fontWeight={600} textAlign="center">
+                  {qa.label}
+                </Text>
+              </Flex>
+            ))}
+          </SimpleGrid>
         </Stack>
-      </VStack>
-    </Flex>
+      </Container>
+    </Box>
   );
 }

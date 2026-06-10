@@ -1,345 +1,193 @@
-import { HeadComponent } from "../Head";
+"use client";
 import {
   Box,
   Flex,
-  Text,
-  IconButton,
+  HStack,
   Button,
+  IconButton,
+  Image,
+  Text,
   Stack,
-  Collapse,
-  Icon,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  useColorModeValue,
-  useBreakpointValue,
+  Drawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
   useDisclosure,
   Container,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { FiMessageSquare } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { NAV_LINKS, VILLAGE } from "@/data/site";
 
 export const NavbarComponent = () => {
-  const { onToggle, isOpen } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
 
-  return (
-    <>
-      <HeadComponent />
-      <Box zIndex={999} position={"fixed"} top={"0"} w={"100%"}>
-        <Container as={Stack} maxW={"6xl"} py={4}>
-          <Flex
-            opacity={"85%"}
-            borderRadius={"full"}
-            bg={useColorModeValue("white", "gray.800")}
-            color={useColorModeValue("gray.600", "white")}
-            minH={"60px"}
-            py={{ base: 2 }}
-            px={{ base: 4 }}
-            border={1.5}
-            borderStyle={"solid"}
-            borderColor={useColorModeValue("gray.400", "gray.900")}
-            align={"center"}
-            boxShadow={"md"}
-            transition={"all 0.25s ease"}
-            _hover={{ opacity: "100%", boxShadow: "lg" }}
-          >
-            <Flex
-              flex={{ base: 1, md: "auto" }}
-              ml={{ base: -2 }}
-              display={{ base: "flex", md: "none" }}
-            >
-              <IconButton
-                onClick={onToggle}
-                icon={
-                  isOpen ? (
-                    <CloseIcon w={3} h={3} />
-                  ) : (
-                    <HamburgerIcon w={5} h={5} />
-                  )
-                }
-                variant={"ghost"}
-                aria-label={"Toggle Navigation"}
-              />
-            </Flex>
-            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-              <Flex align="center" width={"max-content"}>
-                <Box
-                  as="img"
-                  src="/logo.png"
-                  alt="Logo"
-                  h={{ base: "30px", md: "40px" }}
-                  w="auto"
-                  objectFit="contain"
-                />
-                <Text
-                  // display={{ base: "none", md: "block" }}
-                  ml={3}
-                  fontSize="xl"
-                  fontWeight="bold"
-                  color={useColorModeValue("gray.700", "white")}
-                >
-                  Desa Curah Dringu
-                </Text>
-              </Flex>
-            </Flex>
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-            <Stack
-              flex={{ base: 1, md: 0 }}
-              justify={"flex-end"}
-              direction={"row"}
-              spacing={6}
-            >
-              <Flex display={{ base: "none", md: "flex" }} ml={10}>
-                <DesktopNav />
-              </Flex>
-              {/* <Button
-                as={"a"}
-                fontSize={"sm"}
-                fontWeight={400}
-                variant={"link"}
-                href={"#"}
-              >
-                Sign In
-              </Button>
-              <Button
-                as={"a"}
-                display={{ base: "none", md: "inline-flex" }}
-                fontSize={"sm"}
-                fontWeight={600}
-                color={"white"}
-                bg={"gray"}
-                href={"#"}
-                _hover={{
-                  bg: "#4299e1",
-                }}
-              >
-                Sign Up
-              </Button> */}
-            </Stack>
-          </Flex>
-        </Container>
+  const isActive = (href: string) =>
+    href === "/" ? router.pathname === "/" : router.pathname.startsWith(href);
 
-        <Collapse in={isOpen} animateOpacity>
-          <MobileNav />
-        </Collapse>
-      </Box>
-    </>
-  );
-};
-
-const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
-
-  return (
-    <Stack direction={"row"} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Box
-                as="a"
-                p={2}
-                href={navItem.href ?? "#"}
-                fontSize={"sm"}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Box>
-            </PopoverTrigger>
-
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={"xl"}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={"xl"}
-                minW={"sm"}
-              >
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
-    </Stack>
-  );
-};
-
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   return (
     <Box
-      as="a"
-      href={href}
-      role={"group"}
-      display={"block"}
-      p={2}
-      rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+      as="header"
+      position="fixed"
+      top={0}
+      left={0}
+      w="100%"
+      zIndex={1000}
+      transition="all 0.3s ease"
+      bg={scrolled ? "whiteAlpha.900" : "transparent"}
+      backdropFilter={scrolled ? "saturate(180%) blur(12px)" : "none"}
+      boxShadow={scrolled ? "0 2px 20px rgba(0,0,0,0.06)" : "none"}
+      borderBottom={scrolled ? "1px solid" : "none"}
+      borderColor="blackAlpha.100"
     >
-      <Stack direction={"row"} align={"center"}>
-        <Box>
-          <Text
-            transition={"all .3s ease"}
-            _groupHover={{ color: "pink.400" }}
-            fontWeight={500}
+      <Container maxW="7xl">
+        <Flex h={{ base: "64px", md: "72px" }} align="center" justify="space-between">
+          {/* Brand */}
+          <Flex
+            as={NextLink}
+            href="/"
+            align="center"
+            gap={2.5}
+            _hover={{ opacity: 0.9 }}
           >
-            {label}
-          </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
-        </Box>
-        <Flex
-          transition={"all .3s ease"}
-          transform={"translateX(-10px)"}
-          opacity={0}
-          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-          justify={"flex-end"}
-          align={"center"}
-          flex={1}
-        >
-          <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
+            <Image
+              src="/logo.png"
+              alt="Logo Desa Curah Dringu"
+              h={{ base: "34px", md: "40px" }}
+              w="auto"
+              objectFit="contain"
+            />
+            <Box lineHeight={1.1}>
+              <Text
+                fontWeight={800}
+                fontSize={{ base: "sm", md: "md" }}
+                color={scrolled ? "ink.900" : "white"}
+                textShadow={scrolled ? "none" : "0 1px 8px rgba(0,0,0,0.4)"}
+              >
+                {VILLAGE.name}
+              </Text>
+              <Text
+                fontSize="xs"
+                color={scrolled ? "brand.600" : "whiteAlpha.900"}
+                fontWeight={600}
+                textShadow={scrolled ? "none" : "0 1px 8px rgba(0,0,0,0.4)"}
+              >
+                {VILLAGE.district}
+              </Text>
+            </Box>
+          </Flex>
+
+          {/* Desktop nav */}
+          <HStack spacing={1} display={{ base: "none", lg: "flex" }}>
+            {NAV_LINKS.map((link) => (
+              <Button
+                key={link.href}
+                as={NextLink}
+                href={link.href}
+                variant="ghost"
+                size="sm"
+                fontWeight={isActive(link.href) ? 700 : 500}
+                color={
+                  scrolled
+                    ? isActive(link.href)
+                      ? "brand.600"
+                      : "ink.700"
+                    : "white"
+                }
+                textShadow={scrolled ? "none" : "0 1px 8px rgba(0,0,0,0.4)"}
+                _hover={{
+                  bg: scrolled ? "brand.50" : "whiteAlpha.300",
+                }}
+              >
+                {link.label}
+              </Button>
+            ))}
+          </HStack>
+
+          {/* CTA + mobile toggle */}
+          <HStack spacing={2}>
+            <Button
+              as={NextLink}
+              href="/kontak"
+              leftIcon={<FiMessageSquare />}
+              size="sm"
+              colorScheme="sand"
+              display={{ base: "none", sm: "inline-flex" }}
+              boxShadow="0 6px 18px rgba(248,128,18,0.35)"
+            >
+              Lapor / Aspirasi
+            </Button>
+            <IconButton
+              aria-label="Buka menu"
+              icon={<HamburgerIcon w={5} h={5} />}
+              variant="ghost"
+              color={scrolled ? "ink.800" : "white"}
+              display={{ base: "inline-flex", lg: "none" }}
+              onClick={onOpen}
+            />
+          </HStack>
         </Flex>
-      </Stack>
+      </Container>
+
+      {/* Mobile drawer */}
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton mt={2} />
+          <DrawerHeader borderBottomWidth="1px">
+            <Flex align="center" gap={2}>
+              <Image src="/logo.png" alt="Logo" h="32px" w="auto" />
+              <Text fontWeight={800} fontSize="sm">
+                {VILLAGE.name}
+              </Text>
+            </Flex>
+          </DrawerHeader>
+          <DrawerBody py={4}>
+            <Stack spacing={1}>
+              {NAV_LINKS.map((link) => (
+                <Button
+                  key={link.href}
+                  as={NextLink}
+                  href={link.href}
+                  onClick={onClose}
+                  variant={isActive(link.href) ? "solid" : "ghost"}
+                  colorScheme="brand"
+                  justifyContent="flex-start"
+                  size="lg"
+                  fontWeight={600}
+                >
+                  {link.label}
+                </Button>
+              ))}
+              <Button
+                as={NextLink}
+                href="/kontak"
+                onClick={onClose}
+                leftIcon={<FiMessageSquare />}
+                colorScheme="sand"
+                size="lg"
+                mt={3}
+              >
+                Lapor / Aspirasi
+              </Button>
+            </Stack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Box>
   );
 };
-
-const MobileNav = () => {
-  return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-    >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
-    </Stack>
-  );
-};
-
-const MobileNavItem = ({ label, children, href }: NavItem) => {
-  const { isOpen, onToggle } = useDisclosure();
-
-  return (
-    <Stack spacing={4} onClick={children && onToggle}>
-      <Box
-        py={2}
-        as="a"
-        href={href ?? "#"}
-        justifyContent="space-between"
-        alignItems="center"
-        _hover={{
-          textDecoration: "none",
-        }}
-      >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
-        >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(180deg)" : ""}
-            w={6}
-            h={6}
-          />
-        )}
-      </Box>
-
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
-        >
-          {children &&
-            children.map((child) => (
-              <Box as="a" key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Box>
-            ))}
-        </Stack>
-      </Collapse>
-    </Stack>
-  );
-};
-
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-}
-
-const NAV_ITEMS: Array<NavItem> = [
-  {
-    label: "Home",
-    href: "/",
-    // children: [
-    //   {
-    //     label: "Explore Design Work",
-    //     subLabel: "Trending Design to inspire you",
-    //     href: "#",
-    //   },
-    //   {
-    //     label: "New & Noteworthy",
-    //     subLabel: "Up-and-coming Designers",
-    //     href: "#",
-    //   },
-    // ],
-  },
-  // {
-  //   label: "Blog",
-  //   children: [
-  //     {
-  //       label: "Job Board",
-  //       subLabel: "Find your dream design job",
-  //       href: "#",
-  //     },
-  //     {
-  //       label: "Freelance Projects",
-  //       subLabel: "An exclusive list for contract work",
-  //       href: "#",
-  //     },
-  //   ],
-  // },
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Blog",
-    href: "/blog",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
-
-  // {
-  //   label: "Contact",
-  //   href: "#",
-  // },
-];

@@ -1,20 +1,93 @@
-import { Box, Text } from "@chakra-ui/react";
+"use client";
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Icon,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { FiClock, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import { VILLAGE } from "@/data/site";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+const infos = [
+  { icon: FiMapPin, label: "Alamat", value: VILLAGE.address },
+  { icon: FiPhone, label: "Telepon", value: VILLAGE.phone },
+  { icon: FiMail, label: "Email", value: VILLAGE.email },
+  { icon: FiClock, label: "Jam Layanan", value: VILLAGE.hours },
+];
 
 export const MapsComponent = () => {
   return (
-    <Box p={10} bg={"gray.100"} borderRadius={"lg"}>
-      <Text fontSize={"2xl"} fontWeight={"bold"} textAlign={"center"} mb={5}>
-        Lokasi Desa
-      </Text>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7907.074474567588!2d113.10910336348222!3d-7.732694337705844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7b3e227a123b5%3A0xe550fa8829b59f97!2sCurahdringu%2C%20Kec.%20Tongas%2C%20Kabupaten%20Probolinggo%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1732621614076!5m2!1sid!2sid"
-        width="100%"
-        height="450"
-        style={{ border: 0 }}
-        allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
+    <Box id="lokasi" bg="white" py={{ base: 14, md: 20 }} scrollMarginTop="80px">
+      <Container maxW="7xl">
+        <SectionHeading
+          eyebrow="Lokasi"
+          title="Temukan Kantor Desa Kami"
+          subtitle="Berada di tepi pantai Selat Madura, mudah dijangkau dari pusat Kecamatan Tongas."
+        />
+        <Flex
+          direction={{ base: "column", lg: "row" }}
+          gap={6}
+          align="stretch"
+        >
+          <Stack spacing={4} flex={{ lg: "0 0 360px" }}>
+            {infos.map((info) => (
+              <HStack
+                key={info.label}
+                align="start"
+                spacing={4}
+                bg="ink.50"
+                rounded="xl"
+                p={5}
+              >
+                <Flex
+                  w={11}
+                  h={11}
+                  rounded="lg"
+                  bg="brand.500"
+                  color="white"
+                  align="center"
+                  justify="center"
+                  flexShrink={0}
+                >
+                  <Icon as={info.icon} boxSize={5} />
+                </Flex>
+                <Box>
+                  <Text fontWeight={700} fontSize="sm">
+                    {info.label}
+                  </Text>
+                  <Text color="ink.500" fontSize="sm">
+                    {info.value}
+                  </Text>
+                </Box>
+              </HStack>
+            ))}
+          </Stack>
+          <Box
+            flex="1"
+            rounded="2xl"
+            overflow="hidden"
+            border="1px solid"
+            borderColor="ink.100"
+            minH={{ base: "320px", lg: "auto" }}
+          >
+            <iframe
+              src={VILLAGE.mapEmbed}
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: 320, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Peta Lokasi Desa Curah Dringu"
+            />
+          </Box>
+        </Flex>
+      </Container>
     </Box>
   );
 };

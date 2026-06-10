@@ -1,52 +1,50 @@
 import Head from "next/head";
 
-export const HeadComponent = () => {
+interface HeadComponentProps {
+  title?: string;
+  description?: string;
+}
+
+const DEFAULT_DESC =
+  "Website resmi Desa Curah Dringu, Kecamatan Tongas, Kabupaten Probolinggo — desa pesisir di tepi Selat Madura. Layanan administrasi, informasi, dan potensi desa dalam satu tempat.";
+
+export const HeadComponent = ({ title, description }: HeadComponentProps) => {
+  const fullTitle = title
+    ? `${title} | Desa Curah Dringu`
+    : "Desa Curah Dringu | Website Resmi Desa Pesisir Tongas";
+  const desc = description ?? DEFAULT_DESC;
+
   return (
     <Head>
-      <title>Desa Curah Dringu | Official Website</title>
-      <meta
-        name="description"
-        content="Curah Dringu adalah sebuah desa yang berada di Kecamatan Tongas, Kabupaten Probolinggo, provinsi Jawa Timur, Indonesia. Curah Dringu merupakan salah satu desa di Kec. Tongas yang terletak di pantai Selat Madura."
-      />
+      <title>{fullTitle}</title>
+      <meta name="description" content={desc} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       {/* Favicon */}
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
 
-      {/* SEO Tags */}
+      {/* SEO */}
       <meta
         name="keywords"
-        content="Desa Curah Dringu, Probolinggo, Jawa Timur, Indonesia, Tongas"
+        content="Desa Curah Dringu, Probolinggo, Jawa Timur, Tongas, desa pesisir, layanan desa, pengaduan warga"
       />
       <meta name="author" content="Desa Curah Dringu" />
       <meta name="robots" content="index, follow" />
+      <meta name="theme-color" content="#0aa48d" />
 
-      {/* Open Graph / Facebook */}
+      {/* Open Graph */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://curahdringu.site" />
-      <meta
-        property="og:title"
-        content="Desa Curah Dringu | Official Website"
-      />
-      <meta
-        property="og:description"
-        content="Curah Dringu adalah sebuah desa yang berada di Kecamatan Tongas, Kabupaten Probolinggo, provinsi Jawa Timur, Indonesia."
-      />
-      <meta property="og:image" content="/favicon.ico" />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={desc} />
+      <meta property="og:image" content="/content.jpeg" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://curahdringu.site" />
-      <meta
-        property="twitter:title"
-        content="Desa Curah Dringu | Official Website"
-      />
-      <meta
-        property="twitter:description"
-        content="Curah Dringu adalah sebuah desa yang berada di Kecamatan Tongas, Kabupaten Probolinggo, provinsi Jawa Timur, Indonesia."
-      />
-      <meta property="twitter:image" content="/favicon.ico" />
+      <meta property="twitter:title" content={fullTitle} />
+      <meta property="twitter:description" content={desc} />
+      <meta property="twitter:image" content="/content.jpeg" />
     </Head>
   );
 };

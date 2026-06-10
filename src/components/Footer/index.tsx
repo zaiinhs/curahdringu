@@ -1,120 +1,163 @@
+"use client";
 import {
   Box,
-  chakra,
   Container,
+  SimpleGrid,
   Stack,
   Text,
-  useColorModeValue,
-  VisuallyHidden,
+  Flex,
   Image,
+  Heading,
+  HStack,
+  Icon,
+  Divider,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { ReactNode } from "react";
+import NextLink from "next/link";
+import { FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { FiMapPin, FiPhone, FiMail, FiClock } from "react-icons/fi";
+import { NAV_LINKS, SERVICES, VILLAGE } from "@/data/site";
+
+const socials = [
+  { icon: FaInstagram, href: "#", label: "Instagram" },
+  { icon: FaFacebookF, href: "#", label: "Facebook" },
+  { icon: FaYoutube, href: "#", label: "YouTube" },
+  { icon: FaWhatsapp, href: "#", label: "WhatsApp" },
+];
 
 export const FooterComponent = () => {
   return (
-    <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
-    >
-      <Container
-        as={Stack}
-        maxW={"6xl"}
-        py={4}
-        spacing={4}
-        justify={"center"}
-        align={"center"}
-      >
-        <Logo />
-        <Stack direction={"row"} spacing={6}>
-          <Box as="a" href={"#"}>
-            Home
-          </Box>
-          <Box as="a" href={"#"}>
-            About
-          </Box>
-          <Box as="a" href={"#"}>
-            Blog
-          </Box>
-          <Box as="a" href={"#"}>
-            Contact
-          </Box>
-        </Stack>
-      </Container>
-
-      <Box
-        borderTopWidth={1}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.700")}
-      >
-        <Container
-          as={Stack}
-          maxW={"6xl"}
-          py={4}
-          direction={{ base: "column", md: "row" }}
-          spacing={4}
-          justify={{ base: "center", md: "space-between" }}
-          align={{ base: "center", md: "center" }}
-        >
-          <Text>
-            © {new Date().getFullYear()} Desa Curah Dringu. All rights reserved
-          </Text>
-          <Stack direction={"row"} spacing={6}>
-            <SocialButton label={"Twitter"} href={"#"}>
-              <FaTwitter />
-            </SocialButton>
-            <SocialButton label={"YouTube"} href={"#"}>
-              <FaYoutube />
-            </SocialButton>
-            <SocialButton label={"Instagram"} href={"#"}>
-              <FaInstagram />
-            </SocialButton>
+    <Box as="footer" bg="ink.900" color="whiteAlpha.800" mt={0}>
+      <Container maxW="7xl" py={{ base: 12, md: 16 }}>
+        <SimpleGrid columns={{ base: 1, sm: 2, lg: 4 }} spacing={{ base: 8, md: 10 }}>
+          {/* Brand */}
+          <Stack spacing={4}>
+            <Flex align="center" gap={2.5}>
+              <Image
+                src="/logo.png"
+                alt="Logo Desa"
+                h="42px"
+                w="auto"
+                bg="white"
+                rounded="full"
+                p={1}
+              />
+              <Box lineHeight={1.2}>
+                <Text fontWeight={800} color="white">
+                  {VILLAGE.name}
+                </Text>
+                <Text fontSize="xs" color="brand.200">
+                  {VILLAGE.regency}
+                </Text>
+              </Box>
+            </Flex>
+            <Text fontSize="sm" color="whiteAlpha.700">
+              {VILLAGE.tagline}. Hadir untuk melayani warga dengan transparan dan
+              ramah.
+            </Text>
+            <HStack spacing={3} pt={1}>
+              {socials.map((s) => (
+                <Box
+                  key={s.label}
+                  as="a"
+                  href={s.href}
+                  aria-label={s.label}
+                  w={9}
+                  h={9}
+                  rounded="full"
+                  bg="whiteAlpha.100"
+                  display="inline-flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  transition="all 0.2s"
+                  _hover={{ bg: "brand.500", color: "white", transform: "translateY(-2px)" }}
+                >
+                  <Icon as={s.icon} />
+                </Box>
+              ))}
+            </HStack>
           </Stack>
-        </Container>
-      </Box>
-    </Box>
-  );
-};
 
-const Logo = (props: any) => {
-  return (
-    <Box display="flex" alignItems="center" gap={2}>
-      <Image src="/logo.png" alt="Logo Desa" width={8} height={8} />
-      <Text fontSize="lg" fontWeight="bold">
-        Desa Curah Dringu
-      </Text>
-    </Box>
-  );
-};
+          {/* Navigasi */}
+          <Stack spacing={3}>
+            <Heading size="sm" color="white">
+              Navigasi
+            </Heading>
+            {NAV_LINKS.map((link) => (
+              <Box
+                key={link.href}
+                as={NextLink}
+                href={link.href}
+                fontSize="sm"
+                color="whiteAlpha.700"
+                _hover={{ color: "brand.200", pl: 1 }}
+                transition="all 0.2s"
+              >
+                {link.label}
+              </Box>
+            ))}
+          </Stack>
 
-const SocialButton = ({
-  children,
-  label,
-  href,
-}: {
-  children: ReactNode;
-  label: string;
-  href: string;
-}) => {
-  return (
-    <chakra.button
-      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-      rounded={"full"}
-      w={8}
-      h={8}
-      cursor={"pointer"}
-      as={"a"}
-      href={href}
-      display={"inline-flex"}
-      alignItems={"center"}
-      justifyContent={"center"}
-      transition={"background 0.3s ease"}
-      _hover={{
-        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-      }}
-    >
-      <VisuallyHidden>{label}</VisuallyHidden>
-      {children}
-    </chakra.button>
+          {/* Layanan */}
+          <Stack spacing={3}>
+            <Heading size="sm" color="white">
+              Layanan
+            </Heading>
+            {SERVICES.slice(0, 5).map((s) => (
+              <Box
+                key={s.title}
+                as={NextLink}
+                href="/layanan"
+                fontSize="sm"
+                color="whiteAlpha.700"
+                _hover={{ color: "brand.200", pl: 1 }}
+                transition="all 0.2s"
+              >
+                {s.title}
+              </Box>
+            ))}
+          </Stack>
+
+          {/* Kontak */}
+          <Stack spacing={3}>
+            <Heading size="sm" color="white">
+              Kontak
+            </Heading>
+            <HStack align="start" spacing={3} fontSize="sm">
+              <Icon as={FiMapPin} color="brand.300" mt={1} />
+              <Text color="whiteAlpha.700">{VILLAGE.address}</Text>
+            </HStack>
+            <HStack spacing={3} fontSize="sm">
+              <Icon as={FiPhone} color="brand.300" />
+              <Text color="whiteAlpha.700">{VILLAGE.phone}</Text>
+            </HStack>
+            <HStack spacing={3} fontSize="sm">
+              <Icon as={FiMail} color="brand.300" />
+              <Text color="whiteAlpha.700">{VILLAGE.email}</Text>
+            </HStack>
+            <HStack align="start" spacing={3} fontSize="sm">
+              <Icon as={FiClock} color="brand.300" mt={1} />
+              <Text color="whiteAlpha.700">{VILLAGE.hours}</Text>
+            </HStack>
+          </Stack>
+        </SimpleGrid>
+
+        <Divider my={8} borderColor="whiteAlpha.200" />
+
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          align="center"
+          gap={3}
+        >
+          <Text fontSize="sm" color="whiteAlpha.600">
+            © {new Date().getFullYear()} {VILLAGE.name}. Seluruh hak cipta
+            dilindungi.
+          </Text>
+          <Text fontSize="sm" color="whiteAlpha.600">
+            Dibuat dengan 💙 untuk warga {VILLAGE.shortName}
+          </Text>
+        </Flex>
+      </Container>
+    </Box>
   );
 };
