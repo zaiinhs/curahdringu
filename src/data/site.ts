@@ -7,6 +7,8 @@ import {
   FiMessageSquare,
   FiBriefcase,
   FiMapPin,
+  FiSun,
+  FiShoppingBag,
 } from "react-icons/fi";
 import type { IconType } from "react-icons";
 
@@ -37,8 +39,59 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Layanan", href: "/layanan" },
   { label: "Berita", href: "/berita" },
   { label: "Potensi", href: "/potensi" },
+  { label: "BUMDesa", href: "/bumdesa" },
   { label: "Kontak", href: "/kontak" },
 ];
+
+export interface BUMDesaProfile {
+  name: string;
+  foundedYear: number;
+  address: string;
+}
+
+export interface BUMDesaUnit {
+  icon: IconType;
+  name: string;
+}
+
+export interface BUMDesaManagementMember {
+  name: string;
+  role: string;
+  education: string;
+  occupation: string;
+  phone: string;
+}
+
+export interface BUMDesaData {
+  profile: BUMDesaProfile;
+  units: BUMDesaUnit[];
+  fundsThrough2025: number;
+  management: BUMDesaManagementMember[];
+}
+
+export const BUMDesa: BUMDesaData = {
+  profile: {
+    name: "BUM Desa LANCAR JAYA",
+    foundedYear: 2018,
+    address: "Desa Curah Dringu, Tongas, Probolinggo",
+  },
+  units: [
+    {
+      icon: FiShoppingBag,
+      name: "Pembibitan dan Budidaya Kambing",
+    },
+    {
+      icon: FiSun,
+      name: "Budidaya Pertanian",
+    },
+  ],
+  fundsThrough2025: 144_060_000,
+  management: [
+    { name: "Dita Tia Mukarromah", role: "Direktur", education: "S1", occupation: "Wiraswasta", phone: "081359308667" },
+    { name: "Moch. Solihin", role: "Sekretaris", education: "SMA", occupation: "Karyawan Swasta", phone: "082332477256" },
+    { name: "Robiatul Husna", role: "Bendahara", education: "SMA", occupation: "Wiraswasta", phone: "085745285629" },
+  ],
+};
 
 export interface StatItem {
   label: string;
