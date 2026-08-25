@@ -6,15 +6,18 @@ import {
   Flex,
   Heading,
   Image,
+  LinkBox,
+  LinkOverlay,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { FiCalendar } from "react-icons/fi";
+import { FiCalendar, FiExternalLink } from "react-icons/fi";
 import type { NewsItem } from "@/data/site";
 
 export const NewsCard = ({ item }: { item: NewsItem }) => {
   return (
-    <Stack
+    <LinkBox
+      as={Stack}
       spacing={0}
       bg="white"
       border="1px solid"
@@ -23,7 +26,6 @@ export const NewsCard = ({ item }: { item: NewsItem }) => {
       overflow="hidden"
       h="full"
       transition="all 0.25s"
-      cursor="pointer"
       role="group"
       _hover={{
         boxShadow: "0 18px 44px rgba(10,68,61,0.12)",
@@ -54,12 +56,24 @@ export const NewsCard = ({ item }: { item: NewsItem }) => {
           </Flex>
         </Flex>
         <Heading size="md" lineHeight={1.25} noOfLines={2}>
-          {item.title}
+          <LinkOverlay href={item.url} isExternal>
+            {item.title}
+          </LinkOverlay>
         </Heading>
         <Text color="ink.500" fontSize="sm" noOfLines={3}>
           {item.excerpt}
         </Text>
+        <Flex
+          align="center"
+          gap={1}
+          mt="auto"
+          color="brand.600"
+          fontSize="xs"
+          fontWeight={700}
+        >
+          Sumber: {item.source} <FiExternalLink />
+        </Flex>
       </Stack>
-    </Stack>
+    </LinkBox>
   );
 };

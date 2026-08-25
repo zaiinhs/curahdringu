@@ -81,7 +81,8 @@ export const KontakView = () => {
   return (
     <Layout
       title="Kontak & Pengaduan"
-      description="Sampaikan pengaduan, aspirasi, atau pertanyaan kepada Pemerintah Desa Curah Dringu."
+      description="Hubungi Pemerintah Desa Curah Dringu — alamat, telepon, email, jam layanan, dan formulir pengaduan/aspirasi warga."
+      canonicalPath="/kontak"
     >
       <PageHero
         current="Kontak"

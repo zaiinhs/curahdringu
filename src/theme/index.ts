@@ -13,8 +13,8 @@ const config: ThemeConfig = {
 const theme = extendTheme({
   config,
   fonts: {
-    heading: `'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif`,
-    body: `'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif`,
+    heading: `var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, sans-serif`,
+    body: `var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, sans-serif`,
   },
   colors: {
     brand: {

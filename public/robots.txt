@@ -1,0 +1,7 @@
+# robots.txt untuk curahdringu.my.id
+User-agent: *
+Allow: /
+
+# Sitemap utama
+Sitemap: https://curahdringu.my.id/sitemap.xml
+Host: https://curahdringu.my.id

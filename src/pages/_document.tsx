@@ -4,16 +4,10 @@ export default function Document() {
   return (
     <Html lang="id">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
+        {/* Preconnect untuk CDN gambar — kurangi DNS lookup */}
+        <link rel="preconnect" href="https://cdn-jpr.jawapos.com" />
+        <link rel="preconnect" href="https://cdn-assets.jawapos.com" />
+        <link rel="dns-prefetch" href="https://pojoknasional.co.id" />
       </Head>
       <body>
         <Main />

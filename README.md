@@ -205,8 +205,8 @@ export const OFFICERS: Officer[] = [
 ```ts
 export const VILLAGE = {
   name: "Desa Curah Dringu",
-  phone: "(0335) 123-456",   // ← ganti dengan nomor asli
-  email: "halo@curahdringu.site",
+  phone: "+6282332477256",   // ← ganti dengan nomor asli
+  email: "desacurahdringu@gmail.com",
   // ...
 };
 ```

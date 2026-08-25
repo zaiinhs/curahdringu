@@ -1,9 +1,12 @@
 "use client";
 import {
   Box,
+  Button,
   Container,
   Heading,
+  HStack,
   Image,
+  Link,
   SimpleGrid,
   Stack,
   Tag,
@@ -13,6 +16,8 @@ import { POTENSI } from "@/data/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
+const FEATURED = POTENSI.slice(0, 3);
+
 export const PotensiSection = () => {
   return (
     <Box bg="white" py={{ base: 14, md: 20 }}>
@@ -20,10 +25,10 @@ export const PotensiSection = () => {
         <SectionHeading
           eyebrow="Potensi Desa"
           title="Kekayaan Pesisir & Karya Warga"
-          subtitle="Dari hasil laut hingga destinasi senja — inilah yang membuat Curah Dringu istimewa."
+          subtitle="Dari Pantai Bahak yang viral hingga sawah subur — 6 potensi terverifikasi yang menggerakkan ekonomi & wisata desa."
         />
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-          {POTENSI.map((p, i) => (
+          {FEATURED.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.1} h="full">
               <Box
                 position="relative"
@@ -80,6 +85,21 @@ export const PotensiSection = () => {
             </Reveal>
           ))}
         </SimpleGrid>
+        <HStack justify="center" mt={8}>
+          <Button
+            as={Link}
+            href="/potensi"
+            colorScheme="teal"
+            rounded="full"
+            size="md"
+            _hover={{ textDecoration: "none" }}
+          >
+            Lihat 6 Potensi Lengkap →
+          </Button>
+        </HStack>
+        <Text textAlign="center" fontSize="xs" color="ink.400" mt={3}>
+          Data terverifikasi: SIDITA Disbudpar Jatim • Pemkab Probolinggo • Kemen LH • Radar Bromo
+        </Text>
       </Container>
     </Box>
   );

@@ -29,8 +29,9 @@ const STEPS = [
 export const LayananView = () => {
   return (
     <Layout
-      title="Layanan"
-      description="Daftar lengkap layanan administrasi Desa Curah Dringu beserta persyaratannya."
+      title="Layanan Desa"
+      description="Daftar lengkap layanan administrasi Desa Curah Dringu — surat pengantar, domisili, KK, SKTM, hingga izin usaha."
+      canonicalPath="/layanan"
     >
       <PageHero
         current="Layanan"

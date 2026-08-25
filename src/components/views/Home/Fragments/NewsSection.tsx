@@ -2,12 +2,12 @@
 import { Box, Button, Container, Flex, SimpleGrid } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { FiArrowRight } from "react-icons/fi";
-import { NEWS } from "@/data/site";
+import type { NewsItem } from "@/data/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { NewsCard } from "@/components/ui/NewsCard";
 import { Reveal } from "@/components/ui/Reveal";
 
-export const NewsSection = () => {
+export const NewsSection = ({ news }: { news: NewsItem[] }) => {
   return (
     <Box bg="ink.50" py={{ base: 14, md: 20 }}>
       <Container maxW="7xl">
@@ -37,7 +37,7 @@ export const NewsSection = () => {
           </Button>
         </Flex>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-          {NEWS.map((item, i) => (
+          {news.map((item, i) => (
             <Reveal key={item.slug} delay={i * 0.1} h="full">
               <NewsCard item={item} />
             </Reveal>
