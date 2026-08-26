@@ -1,38 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://curahdringu.my.id/</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://curahdringu.my.id/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://curahdringu.my.id/" />
   </url>
   <url>
     <loc>https://curahdringu.my.id/profil</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://curahdringu.my.id/profil" />
   </url>
   <url>
     <loc>https://curahdringu.my.id/layanan</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://curahdringu.my.id/layanan" />
   </url>
   <url>
     <loc>https://curahdringu.my.id/berita</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://curahdringu.my.id/berita" />
   </url>
   <url>
     <loc>https://curahdringu.my.id/potensi</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://curahdringu.my.id/potensi" />
   </url>
   <url>
     <loc>https://curahdringu.my.id/bumdesa</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://curahdringu.my.id/bumdesa" />
   </url>
   <url>
     <loc>https://curahdringu.my.id/kontak</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="id" href="https://curahdringu.my.id/kontak" />
   </url>
 </urlset>

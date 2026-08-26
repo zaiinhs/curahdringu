@@ -5,6 +5,7 @@ import {
   getBreadcrumbJsonLd,
   getOrganizationJsonLd,
   getWebsiteJsonLd,
+  getLocalBusinessJsonLd,
 } from "@/lib/seo";
 
 interface HeadComponentProps {
@@ -50,6 +51,7 @@ export const HeadComponent = ({
 
   const websiteJsonLd = getWebsiteJsonLd();
   const orgJsonLd = getOrganizationJsonLd();
+  const localBusinessJsonLd = getLocalBusinessJsonLd();
   const breadcrumbJsonLd = breadcrumbs
     ? getBreadcrumbJsonLd(breadcrumbs)
     : getBreadcrumbJsonLd([{ name: "Beranda", url: SITE.url }]);
@@ -65,9 +67,22 @@ export const HeadComponent = ({
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
 
+      {/* PWA Manifest */}
+      <link rel="manifest" href="/manifest.json" />
+      <meta name="theme-color" content={SITE.themeColor} />
+      <meta name="application-name" content={SITE.name} />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content={SITE.shortName} />
+      <meta name="mobile-web-app-capable" content="yes" />
+
       {/* SEO */}
       <meta name="keywords" content={SITE.keywords} />
       <meta name="author" content={SITE.name} />
+      <meta name="geo.region" content="ID-JI" />
+      <meta name="geo.placename" content="Curah Dringu, Tongas, Probolinggo" />
+      <meta name="geo.position" content="-7.732694;113.109103" />
+      <meta name="ICBM" content="-7.732694, 113.109103" />
       <meta
         name="robots"
         content={
@@ -113,6 +128,10 @@ export const HeadComponent = ({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
       />
       {breadcrumbs && (
         <script

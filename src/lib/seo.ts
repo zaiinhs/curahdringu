@@ -64,6 +64,41 @@ export const getOrganizationJsonLd = () => ({
   sameAs: [] as string[],
 });
 
+/** LocalBusiness Schema — untuk local SEO di Google Maps & pencarian lokal */
+export const getLocalBusinessJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE.url}#localbusiness`,
+  name: SITE.name,
+  image: `${SITE.url}/content.jpeg`,
+  description: SITE.description,
+  url: SITE.url,
+  telephone: VILLAGE.phone,
+  email: VILLAGE.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Jl. Raya Curah Dringu",
+    addressLocality: "Tongas",
+    addressRegion: "Jawa Timur",
+    postalCode: "67252",
+    addressCountry: "ID",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -7.732694,
+    longitude: 113.109103,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "15:00",
+    },
+  ],
+  priceRange: "Gratis",
+});
+
 export const getBreadcrumbJsonLd = (items: BreadcrumbItem[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -96,4 +131,18 @@ export const getNewsArticleJsonLd = (article: {
     logo: { "@type": "ImageObject", url: `${SITE.url}/logo.png` },
   },
   mainEntityOfPage: { "@type": "WebPage", "@id": article.url },
+});
+
+/** FAQ Schema untuk halaman yang memiliki tanya-jawab */
+export const getFAQJsonLd = (faqs: Array<{ question: string; answer: string }>) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
 });

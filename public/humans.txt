@@ -1,0 +1,13 @@
+/* TEAM */
+Developer: Tim Desa Curah Dringu
+Site: https://curahdringu.my.id
+Location: Tongas, Probolinggo, Jawa Timur, Indonesia
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Components: Next.js, React, Chakra UI
+Software: Visual Studio Code
+
+/* THANKS */
+Kepada seluruh warga Desa Curah Dringu yang telah mendukung
+pengembangan website resmi desa ini.

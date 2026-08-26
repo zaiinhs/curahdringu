@@ -1,0 +1,3 @@
+Contact: mailto:desacurahdringu@gmail.com
+Preferred-Languages: id, en
+Canonical: https://curahdringu.my.id/.well-known/security.txt

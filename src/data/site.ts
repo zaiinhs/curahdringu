@@ -42,6 +42,7 @@ export const SITE = {
   twitterHandle: "",
   // Ganti dengan kode verifikasi Google Search Console saat domain sudah live
   // Dapatkan di https://search.google.com/search-console
+  // Setelah dapat kode verifikasi, isi di sini (contoh: "abc123def456...")
   googleSiteVerification: "",
 };
 

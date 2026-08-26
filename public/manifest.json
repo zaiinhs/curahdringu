@@ -1,0 +1,36 @@
+{
+  "name": "Desa Curah Dringu",
+  "short_name": "Curah Dringu",
+  "description": "Website resmi Desa Curah Dringu, Kecamatan Tongas, Kabupaten Probolinggo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0aa48d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["government", "public"],
+  "lang": "id-ID",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/content.jpeg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ]
+}
