@@ -192,13 +192,9 @@ export const BumdesaView = () => {
                         </Button>
                       </InputRightElement>
                     </InputGroup>
-                    {error ? (
+                    {error && (
                       <Text color="red.500" fontSize="sm" fontWeight={600}>
                         {error} {isLocked ? `(${remainingSec}s)` : ""}
-                      </Text>
-                    ) : (
-                      <Text color="ink.400" fontSize="xs">
-                        PIN default: <code>300900</code> — ganti di <code>src/components/views/Bumdesa/index.tsx</code> bila perlu.
                       </Text>
                     )}
                   </Stack>
