@@ -89,6 +89,9 @@ yarn start          # atau: npm run start
 | `yarn build`   | Membuat build produksi yang teroptimasi  |
 | `yarn start`   | Menjalankan server dari hasil build      |
 | `yarn lint`    | Menjalankan ESLint                       |
+| `npm run build:pages` | Membuat static export Cloudflare Pages di `out/` |
+| `npm run preview` | Build dan preview lokal dengan Wrangler |
+| `npm run deploy` | Build dan deploy ke proyek Pages `curahdringu` |
 
 ---
 
@@ -143,7 +146,7 @@ curahdringu/
 │   │   ├── potensi.tsx             # /potensi
 │   │   ├── kontak.tsx              # /kontak
 │   │   ├── about.tsx               # /about    → redirect ke /profil
-│   │   └── api/hello.ts            # Contoh API route bawaan
+│   │   └── ...                     # Halaman Next.js (Pages Router)
 │   └── styles/
 │       └── globals.css
 ├── next.config.js
@@ -246,15 +249,23 @@ Untuk mengganti warna utama, cukup sunting palet `brand`/`sand` di
 
 ## ☁️ Deploy
 
-Cara termudah men-deploy adalah lewat [Vercel](https://vercel.com/) (pembuat
-Next.js):
+Website di-deploy ke proyek Cloudflare Pages `curahdringu` sebagai static
+export Next.js. Konfigurasi Git Pages menggunakan:
 
-1. Hubungkan repository GitHub ini ke Vercel.
-2. Vercel mendeteksi Next.js otomatis — tanpa konfigurasi tambahan.
-3. Setiap `push` ke branch `main` akan ter-deploy otomatis.
+- **Build command:** `npm run build:pages`
+- **Build output directory:** `out`
+- **Production branch:** `main`
 
-Lihat [dokumentasi deployment Next.js](https://nextjs.org/docs/deployment)
-untuk opsi lain (Netlify, server sendiri, dll).
+Setiap `push` ke `main` akan menjalankan build dan deployment produksi. Untuk
+deploy langsung dari CLI:
+
+```bash
+npx wrangler login
+npm run deploy
+```
+
+Berita eksternal diambil saat build Pages. Jalankan deployment baru untuk
+memperbarui hasil agregasi tanpa perubahan kode.
 
 ---
 

@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
+const isCloudflarePages = process.env.CF_PAGES === "1";
+
 const nextConfig = {
+  output: isCloudflarePages ? "export" : undefined,
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
@@ -27,8 +30,9 @@ const nextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
   },
-  async headers() {
-    return [
+  headers: isCloudflarePages
+    ? undefined
+    : async () => [
       {
         source: "/:all*(svg|jpg|jpeg|png|gif|webp|avif|ico|woff|woff2)",
         headers: [
@@ -56,18 +60,17 @@ const nextConfig = {
           },
         ],
       },
-    ];
-  },
-  async redirects() {
-    return [
+    ],
+  redirects: isCloudflarePages
+    ? undefined
+    : async () => [
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.curahdringu.my.id" }],
         destination: "https://curahdringu.my.id/:path*",
         permanent: true,
       },
-    ];
-  },
+    ],
 };
 
 module.exports = nextConfig;

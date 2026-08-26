@@ -20,14 +20,14 @@ export const getStaticProps: GetStaticProps<BeritaProps> = async () => {
 
     return {
       props: { news: news.length ? news : getFallbackNews() },
-      revalidate: 3600,
+      ...(process.env.CF_PAGES === "1" ? {} : { revalidate: 3600 }),
     };
   } catch (error) {
     console.error("Unable to load village news", error);
 
     return {
       props: { news: getFallbackNews() },
-      revalidate: 3600,
+      ...(process.env.CF_PAGES === "1" ? {} : { revalidate: 3600 }),
     };
   }
 };
