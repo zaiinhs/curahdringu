@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Ringkasan Keuangan BUMDesa Lancar Jaya | Agustus 2025–September 2026</title>
+  <style>
+    :root {
+      --ink: #15352f;
+      --body: #273c37;
+      --muted: #60716b;
+      --line: #d9e2da;
+      --paper: #fffefa;
+      --forest: #153d34;
+      --sage: #eaf2e9;
+      --cream: #f6f0e4;
+      --amber: #ab652c;
+      --rust: #964a32;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: #e8ece6; }
+    body {
+      margin: 0;
+      padding: 30px 16px;
+      color: var(--body);
+      font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-variant-numeric: tabular-nums;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .report { display: grid; gap: 24px; justify-content: center; }
+    .sheet {
+      display: flex;
+      flex-direction: column;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 15mm 16mm 13mm;
+      background: var(--paper);
+      box-shadow: 0 20px 60px rgba(25, 55, 43, .10);
+    }
+    .masthead, .sheet-footer, .section-heading, .unit-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .masthead {
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .place { margin-top: 3px; color: var(--muted); font-size: 10.5px; }
+    .masthead-right { color: var(--muted); font-size: 10px; text-align: right; line-height: 1.65; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--amber);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .intro { margin: 24px 0 22px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.045em; }
+    h1 { max-width: 650px; margin-bottom: 8px; font-size: 38px; line-height: 1.11; }
+    h2 { margin-bottom: 0; font-size: 24px; line-height: 1.18; }
+    .lead { max-width: 630px; margin-bottom: 0; color: var(--muted); font-size: 12.5px; }
+    .hero {
+      display: grid;
+      grid-template-columns: .95fr 1fr;
+      gap: 26px;
+      padding: 24px 26px;
+      border-radius: 4px;
+      background: var(--forest);
+      color: #fff;
+    }
+    .hero-label, .hero-caption, .bridge-label {
+      color: #bed5c9;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .hero-number { margin: 14px 0 6px; font-size: 28px; font-weight: 750; letter-spacing: -.04em; white-space: nowrap; }
+    .hero-note { max-width: 215px; margin-bottom: 0; color: #c4d7cd; font-size: 11px; line-height: 1.45; }
+    .bridge { padding-left: 24px; border-left: 1px solid #56756b; }
+    .bridge-label { margin-bottom: 8px; }
+    .bridge-row { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 11.5px; }
+    .bridge-row span:first-child { color: #d4e1d9; }
+    .bridge-row strong { white-space: nowrap; font-weight: 700; }
+    .bridge-row:last-child { padding-top: 9px; border-top: 1px solid #56756b; color: #fff; font-weight: 700; }
+    .section { margin-top: 27px; }
+    .section-heading { align-items: baseline; margin-bottom: 12px; }
+    .section-index { color: var(--amber); font-size: 10px; font-weight: 800; letter-spacing: .1em; white-space: nowrap; }
+    .section-sub { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+    .usage-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .usage {
+      min-height: 94px;
+      padding: 15px 13px 12px;
+      border: 1px solid var(--line);
+      border-top: 3px solid #537965;
+      background: #fff;
+    }
+    .usage:nth-child(2) { border-top-color: #bc8a54; }
+    .usage:nth-child(3) { border-top-color: #7b9485; }
+    .usage-name { min-height: 31px; color: var(--muted); font-size: 10.5px; line-height: 1.35; }
+    .usage-value { margin-top: 9px; color: var(--ink); font-size: 17px; font-weight: 750; letter-spacing: -.03em; white-space: nowrap; }
+    .usage-note { margin-top: 4px; color: var(--muted); font-size: 9.5px; }
+    .outcome {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 27px;
+      padding: 20px 22px;
+      background: var(--cream);
+      border-left: 3px solid var(--amber);
+    }
+    .outcome h2 { font-size: 21px; }
+    .outcome-number { margin: 11px 0 3px; color: var(--rust); font-size: 24px; font-weight: 750; letter-spacing: -.04em; white-space: nowrap; }
+    .outcome-small { margin: 0; color: #705d4c; font-size: 10.5px; }
+    .outcome-detail { display: grid; align-content: center; gap: 5px; }
+    .outcome-detail > div { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px solid #ded5c7; font-size: 11px; }
+    .outcome-detail strong { color: var(--ink); white-space: nowrap; }
+    .outcome-detail p { margin: 5px 0 0; color: #705d4c; font-size: 10px; line-height: 1.4; }
+    .position {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 15px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10.5px;
+    }
+    .position strong { color: var(--ink); font-size: 12px; white-space: nowrap; }
+    .position .position-label { margin-right: auto; font-weight: 700; }
+    .sheet-footer {
+      align-items: flex-end;
+      margin-top: auto;
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 9.5px;
+      line-height: 1.45;
+    }
+    .sheet-footer > span:first-child { max-width: 560px; min-width: 0; overflow-wrap: anywhere; }
+    .folio { color: var(--ink); font-weight: 700; letter-spacing: .1em; white-space: nowrap; }
+    .unit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .unit-card { padding: 19px 17px 17px; border: 1px solid var(--line); background: #fff; }
+    .unit-card.agriculture { background: #f4f8f1; }
+    .unit-number { color: var(--amber); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+    .unit-card h3 { max-width: 230px; margin: 7px 0 17px; color: var(--ink); font-size: 16px; line-height: 1.2; }
+    .unit-result { color: var(--rust); font-size: 23px; font-weight: 750; letter-spacing: -.04em; white-space: nowrap; }
+    .unit-caption { color: var(--muted); font-size: 10px; }
+    .unit-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; padding: 11px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .unit-stats span { display: block; color: var(--muted); font-size: 9.5px; }
+    .unit-stats strong { display: block; margin-top: 3px; color: var(--ink); font-size: 12.5px; white-space: nowrap; }
+    .unit-process { margin: 13px 0 3px; color: var(--ink); font-size: 11px; font-weight: 750; }
+    .unit-footnote { margin: 0; color: var(--muted); font-size: 10.5px; line-height: 1.5; }
+    .unit-card .unit-footnote + .unit-footnote { margin-top: 6px; }
+    .cycle-section { margin-top: 26px; }
+    table { width: 100%; margin-top: 12px; border-collapse: collapse; font-size: 11px; }
+    th { padding: 9px 10px; background: var(--forest); color: #fff; font-size: 9.5px; font-weight: 650; text-align: left; }
+    td { padding: 11px 10px; border-bottom: 1px solid var(--line); }
+    td:not(:first-child), th:not(:first-child) { text-align: right; white-space: nowrap; }
+    tbody tr:nth-child(even) { background: #f7f8f3; }
+    td:first-child strong { display: block; color: var(--ink); font-size: 11px; }
+    td:first-child small { color: var(--muted); font-size: 9.5px; }
+    .negative { color: var(--rust); font-weight: 750; }
+    .positive { color: #24604a; font-weight: 750; }
+    tfoot { background: var(--sage); color: var(--ink); font-weight: 800; }
+    tfoot td { border-bottom: 0; }
+    .cycle-note { margin: 10px 0 0; color: var(--muted); font-size: 10.5px; }
+    .reading-note { margin-top: 22px; padding: 15px 17px; border-left: 3px solid #789483; background: #eef3ed; }
+    .reading-note strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: 11px; }
+    .reading-note p { margin: 0; color: #4b6155; font-size: 10.5px; line-height: 1.5; }
+
+    @media (max-width: 700px) {
+      body { padding: 0; }
+      .report { display: block; }
+      .sheet { width: 100%; min-height: auto; padding: 28px 22px; box-shadow: none; }
+      .sheet + .sheet { border-top: 8px solid #e8ece6; }
+      h1 { font-size: 32px; }
+      .hero, .outcome, .unit-grid { grid-template-columns: 1fr; }
+      .bridge { padding: 13px 0 0; border-left: 0; border-top: 1px solid #56756b; }
+      .usage-grid { grid-template-columns: 1fr; }
+      .usage { min-height: auto; }
+      .usage-name { min-height: 0; }
+      .position { flex-wrap: wrap; gap: 5px 16px; }
+      .position .position-label { width: 100%; }
+      .sheet-footer { margin-top: 20px; }
+      .table-wrap { overflow-x: auto; }
+      table { min-width: 560px; }
+    }
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: #fff; }
+      body { padding: 0; }
+      .report { display: block; }
+      .sheet { width: 210mm; height: 297mm; min-height: 0; box-shadow: none; break-after: page; overflow: hidden; }
+      .sheet:last-child { break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="report">
+    <article class="sheet" aria-label="Halaman 1: alur dana dan kondisi keuangan">
+      <header class="masthead">
+        <div>
+          <div class="brand">BUMDesa Lancar Jaya</div>
+          <div class="place">Desa Curahdringu · Tongas · Probolinggo</div>
+        </div>
+        <div class="masthead-right">Ringkasan keuangan<br>01 Agu 2025 — 30 Sep 2026</div>
+      </header>
+
+      <div class="intro">
+        <p class="eyebrow">01 / Gambaran keuangan</p>
+        <h1>Dari dana awal ke saldo kas tersisa.</h1>
+        <p class="lead">Ringkasan pendanaan, uang masuk dan keluar, serta hasil usaha menurut pembukuan sampai <strong>30 September 2026</strong> — bukan saldo rekening real-time.</p>
+      </div>
+
+      <section class="hero" aria-label="Rekonsiliasi dana dan saldo Bank Jatim">
+        <div>
+          <div class="hero-label">Sisa kas · Bank Jatim</div>
+          <div class="hero-number">Rp27.215.000</div>
+          <p class="hero-note">Saldo akhir yang tercatat per 30 September 2026 dalam model pembukuan Bank Jatim langsung.</p>
+        </div>
+        <div class="bridge">
+          <div class="bridge-label">Alur dana kumulatif</div>
+          <div class="bridge-row"><span>+ Dana Ketahanan Pangan / modal desa</span><strong>Rp144.060.000</strong></div>
+          <div class="bridge-row"><span>+ Penerimaan panen padi</span><strong>Rp17.100.000</strong></div>
+          <div class="bridge-row"><span>− Semua pembayaran melalui bank</span><strong>Rp133.945.000</strong></div>
+          <div class="bridge-row"><span>= Saldo akhir</span><strong>Rp27.215.000</strong></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="usage-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">Penggunaan dana</p><h2 id="usage-title">Ke mana kas dibayarkan?</h2></div>
+          <span class="section-index">TOTAL Rp133.945.000</span>
+        </div>
+        <div class="usage-grid">
+          <div class="usage"><div class="usage-name">Pembelian aset usaha</div><div class="usage-value">Rp72.100.000</div><div class="usage-note">Kambing, kandang &amp; mesin pakan</div></div>
+          <div class="usage"><div class="usage-name">Sewa dibayar di muka</div><div class="usage-value">Rp20.000.000</div><div class="usage-note">Lahan kambing &amp; pertanian</div></div>
+          <div class="usage"><div class="usage-name">Operasional &amp; panen tunai</div><div class="usage-value">Rp41.845.000</div><div class="usage-note">Biaya usaha yang dibayarkan</div></div>
+        </div>
+      </section>
+
+      <section class="outcome" aria-labelledby="result-title">
+        <div>
+          <p class="eyebrow">Hasil akuntansi · 14 bulan</p>
+          <h2 id="result-title">Masih mencatat rugi.</h2>
+          <div class="outcome-number">−Rp45.600.556</div>
+          <p class="outcome-small">Rugi kumulatif dua unit usaha</p>
+        </div>
+        <div class="outcome-detail">
+          <div><span>Pendapatan diakui</span><strong>Rp17.100.000</strong></div>
+          <div><span>Beban diakui</span><strong>Rp62.700.556</strong></div>
+          <p>Rugi usaha tidak sama dengan penurunan kas: pembelian aset dan sewa di muka bukan seluruhnya beban; penyusutan, amortisasi, dan kerugian ternak juga diakui tanpa kas keluar pada saat pencatatan.</p>
+        </div>
+      </section>
+
+      <div class="position" aria-label="Posisi keuangan akhir periode">
+        <span class="position-label">Posisi keuangan per 30 Sep 2026</span>
+        <span>Aset bersih <strong>Rp98.459.444</strong></span>
+        <span>Kewajiban tercatat <strong>Rp0</strong></span>
+      </div>
+
+      <footer class="sheet-footer">
+        <span>Dana awal merupakan penyertaan modal desa, bukan pendapatan. Seluruh angka merujuk pada laporan manajemen yang berakhir 30 September 2026.</span>
+        <span class="folio">01 / 02</span>
+      </footer>
+    </article>
+
+    <article class="sheet" aria-label="Halaman 2: dua unit usaha dan hasil panen">
+      <header class="masthead">
+        <div>
+          <div class="brand">BUMDesa Lancar Jaya</div>
+          <div class="place">Desa Curahdringu · Tongas · Probolinggo</div>
+        </div>
+        <div class="masthead-right">Kinerja unit usaha<br>Posisi 30 Sep 2026</div>
+      </header>
+
+      <div class="intro">
+        <p class="eyebrow">02 / Operasional &amp; hasil</p>
+        <h1>Dua unit usaha, dua cerita.</h1>
+        <p class="lead">Kambing masih pada tahap pemeliharaan tanpa penjualan tercatat. Pertanian telah menghasilkan tiga panen, tetapi hasil keseluruhan masih negatif.</p>
+      </div>
+
+      <section class="unit-grid" aria-label="Perbandingan dua unit usaha">
+        <div class="unit-card">
+          <div class="unit-top"><span class="unit-number">UNIT 01</span><span class="unit-caption">Peternakan</span></div>
+          <h3>Pembibitan &amp; budidaya kambing</h3>
+          <div class="unit-result">−Rp43.405.556</div>
+          <div class="unit-caption">Rugi yang diakui sampai akhir periode</div>
+          <div class="unit-stats"><div><span>Pendapatan tercatat</span><strong>Rp0</strong></div><div><span>Beban diakui</span><strong>Rp43.405.556</strong></div></div>
+          <p class="unit-process">18 ekor dibeli → 4 mati → 14 tersisa</p>
+          <p class="unit-footnote">Nilai buku kambing tersisa <strong>Rp32.744.444</strong>; belum ada penjualan kambing yang tercatat.</p>
+        </div>
+        <div class="unit-card agriculture">
+          <div class="unit-top"><span class="unit-number">UNIT 02</span><span class="unit-caption">Pertanian</span></div>
+          <h3>Budidaya pertanian padi</h3>
+          <div class="unit-result">−Rp2.195.000</div>
+          <div class="unit-caption">Rugi bersih tiga siklus panen</div>
+          <div class="unit-stats"><div><span>Pendapatan panen</span><strong>Rp17.100.000</strong></div><div><span>Beban termasuk sewa</span><strong>Rp19.295.000</strong></div></div>
+          <p class="unit-process">3 siklus panen · siklus ke-3 sudah laba</p>
+          <p class="unit-footnote">Panen terakhir: 800 kg × Rp12.500/kg = <strong>Rp10.000.000</strong> penerimaan.</p>
+        </div>
+      </section>
+
+      <section class="cycle-section" aria-labelledby="cycles-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">Perjalanan pertanian</p><h2 id="cycles-title">Hasil per siklus padi</h2></div>
+          <span class="section-index">BIAYA SUDAH TERMASUK SEWA</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Panen</th><th scope="col">Pendapatan</th><th scope="col">Biaya</th><th scope="col">Hasil</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Siklus 1</strong><small>Februari 2026</small></td><td>Rp1.100.000</td><td>Rp5.106.667</td><td class="negative">−Rp4.006.667</td></tr>
+              <tr><td><strong>Siklus 2</strong><small>Mei 2026</small></td><td>Rp6.000.000</td><td>Rp7.166.667</td><td class="negative">−Rp1.166.667</td></tr>
+              <tr><td><strong>Siklus 3</strong><small>September 2026</small></td><td>Rp10.000.000</td><td>Rp7.021.666</td><td class="positive">+Rp2.978.334</td></tr>
+            </tbody>
+            <tfoot><tr><td>Total 3 siklus</td><td>Rp17.100.000</td><td>Rp19.295.000</td><td class="negative">−Rp2.195.000</td></tr></tfoot>
+          </table>
+        </div>
+        <p class="cycle-note">Siklus 3 mencakup biaya langsung Rp5.355.000, sewa tunai Rp1.000.000, dan alokasi sewa dibayar di muka (nonkas) Rp666.666.</p>
+      </section>
+
+      <aside class="reading-note" aria-label="Catatan dasar pembukuan">
+        <strong>Dasar pembacaan</strong>
+        <p>Saldo kas memakai model Bank Jatim langsung; catatan penarikan pada data sumber tidak dijurnal kembali. Siklus 3 dan beberapa transaksi September merupakan penyesuaian manajemen. Cocokkan saldo menurut pembukuan dengan mutasi rekening untuk memastikan posisi kas riil.</p>
+      </aside>
+
+      <footer class="sheet-footer">
+        <span>Sumber: <em>LAPORAN_KEUANGAN_BUMDESA_LANCAR_JAYA_AGU2025_SEP2026.xlsx</em> · sheet TRANSAKSI, REKONSILIASI, SIKLUS PERTANIAN &amp; DAFTAR KAMBING.</span>
+        <span class="folio">02 / 02</span>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

@@ -89,7 +89,7 @@ export const HeadComponent = ({
           noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         }
       />
-      <meta name="googlebot" content="index, follow, max-image-preview:large" />
+      <meta name="googlebot" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
       <meta name="theme-color" content={SITE.themeColor} />
       <meta name="format-detection" content="telephone=no" />
       {SITE.googleSiteVerification && (

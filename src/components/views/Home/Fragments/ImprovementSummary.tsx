@@ -84,8 +84,8 @@ const IMPROVEMENTS: Improvement[] = [
     href: "/bumdesa",
     badge: "Rp144 Jt Modal",
     badgeColor: "purple",
-    desc: "Laporan riil Agu 2025–Agu 2026 per 23 Agu 2026 — transparan & terperinci.",
-    highlight: "4 KPI, grafik 13 bulan, 24 rincian beban, aset kambing 3 kategori.",
+    desc: "Laporan riil Agu 2025–Sep 2026 per 30 Sep 2026 — transparan & terperinci.",
+    highlight: "4 KPI, grafik 14 bulan, 25 rincian beban, aset kambing 3 kategori.",
     cta: "Lihat Laporan",
   },
   {
@@ -111,7 +111,7 @@ export const ImprovementSummary = () => {
                 PEMBARUAN MENYELURUH
               </Badge>
               <Badge colorScheme="sand" rounded="full" px={3} py={1} fontSize="xs">
-                AGUSTUS 2026
+                SEPTEMBER 2026
               </Badge>
               <Badge variant="outline" colorScheme="gray" rounded="full" px={3} py={1} fontSize="xs">
                 6 MENU • 28+ DATA RIIL
@@ -327,7 +327,7 @@ export const ImprovementSummary = () => {
         </Reveal>
 
         <Text textAlign="center" fontSize="xs" color="ink.400" mt={4}>
-          Diperbarui: Potensi & Profil (Agustus 2026) • Berita ISR • BUMDesa Keuangan Riil 23 Agu 2026
+          Diperbarui: Potensi & Profil (Agustus 2026) • Berita ISR • BUMDesa Keuangan Riil 30 Sep 2026
         </Text>
       </Container>
     </Box>
